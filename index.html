@@ -1,13 +1,23 @@
 <html>
     <head>
+        <script src="https://kit.fontawesome.com/8fbaf6c512.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="style.css">
     </head>
-    <body>
-        <div class="card" id="title">
-            <h2 id="titleheader" >Welcome to my OS!</h2>
+    <body style="display:flex">
+        <div class="navbar">
+            <div  id="titleopen"><i class="fa-solid fa-house"></i></div>
+        </div>
+        <div style="top: 50px; left: 100px;" class="card" id="title">
+            <span class="closebutton" id="titleclose"></span>
+            <h2 class="header" id="titleheader" >Welcome to my OS!</h2>
             <p>lorem ipsum something</p>
         </div>
-        <div id="welcome_image"></div>
+        <div style="top: 60px; left: 110px;" class="card" id="clock">
+
+        </div>
+        <div style="top: 70px; left: 120px;" class="card" id="weather">
+
+        </div>
     </body>
     <script src="script.js"></script>
 </html>

@@ -1,9 +1,41 @@
 body{
-    background-image: "https://apod.nasa.gov/apod/image/0807/echuschasma_marsexpress.jpg";
+    background-image: url("https://apod.nasa.gov/apod/image/0807/echuschasma_marsexpress.jpg");
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+    background-size:100% 100%;
+}
+.navbar{
+    padding:5px;
+    background-color:aliceblue;
+    display:flex;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius:10px;
 }
 .card{
+    background-color:aliceblue;
+    display:flex;
+    flex-direction: column;
     width:fit-content;
     justify-content: center;
     position:absolute;
-    border: 1px solid black;
+    border-radius:5px;
+    border: 2px solid black;
+    padding:5px;
+}
+.closebutton {
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  background-color: #ff0000;
+  border-radius: 50%; /* Makes it a circle */
+  border: 2px solid #ffffff; /* Separates it from the background */
+}
+.header{
+    cursor:grab;
+}
+
+.navbar svg{
+    font-size:2rem;
 }

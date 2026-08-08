@@ -1,4 +1,8 @@
 # andOS
 Hackclub mission to create an OS that runs online.
 
-Soo...
+Usable apps in here:
+-clock/calendar
+-local weather
+-find out about todays picture
+-more to come
