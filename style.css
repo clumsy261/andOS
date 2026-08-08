@@ -9,7 +9,7 @@ body{
     background-color:aliceblue;
     display:flex;
     flex-direction: column;
-    border: 2px solid black;
+    border: 3px solid black;
     border-radius:10px;
 }
 .card{
@@ -19,23 +19,28 @@ body{
     width:fit-content;
     justify-content: center;
     position:absolute;
-    border-radius:5px;
-    border: 2px solid black;
-    padding:5px;
+    border-radius:10px;
+    border: 3px solid black;
+    overflow: hidden;
 }
-.closebutton {
-  top: 0;
-  right: 0;
-  width: 10px;
-  height: 10px;
-  background-color: #ff0000;
-  border-radius: 50%; /* Makes it a circle */
-  border: 2px solid #ffffff; /* Separates it from the background */
+
+.closebutton{
+    width:fit-content;
 }
+
 .header{
     cursor:grab;
 }
 
 .navbar svg{
     font-size:2rem;
+}
+.appbar
+{
+    background-color: grey;
+    padding:5px;
+}
+.appcontent{
+        padding:5px;
+
 }
