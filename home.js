@@ -9,7 +9,7 @@ export default function INIT_HOME(top,left){
     ///add html items - navbar icon + window div inside body + window content
     document.querySelector(".navbar").innerHTML+=`<div id="${handle}open"><i class="fa-solid fa-house"></i></div>`;
     document.querySelector("body").innerHTML+=`<div style="top: ${top}px; left: ${left}px;" class="card" id="${handle}"></div>`;
-    document.querySelector("#title").innerHTML=`
+    document.querySelector(`#${handle}`).innerHTML=`
     <div class="appbar header" id="${handle}header">
             <div id="${handle}close" class="closebutton"><i class="fa-solid fa-circle" style="color: rgb(255, 0, 0);"></i></div>
     </div>
@@ -22,7 +22,7 @@ export default function INIT_HOME(top,left){
     dragElement(document.getElementById(handle));
     var ScreenOpen = document.querySelector(`#${handle}open`)
     var ScreenClose = document.querySelector(`#${handle}close`)
-    ScreenClose.addEventListener("click", function() {
+    ScreenClose.addEventListener("mousedown", function(e) {
     closeWindow(element);
     });
     ScreenOpen.addEventListener("click", function(){
@@ -33,6 +33,7 @@ export default function INIT_HOME(top,left){
     });
 
 function dragElement(element) {
+    if (element.style.display === "none") return;        
         var initialX = 0;
         var initialY = 0;
         var currentX = 0;
@@ -54,6 +55,7 @@ function dragElement(element) {
   }
 
   function elementDrag(e) {
+    if (element.style.display === "none") return;        
     e = e || window.event;
     e.preventDefault();
     currentX = initialX - e.clientX;

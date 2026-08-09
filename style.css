@@ -29,6 +29,7 @@ body{
 
 .closebutton{
     width:fit-content;
+    cursor:default;
 }
 
 .header{
