@@ -40,9 +40,9 @@ const handle = "weather";
 //this function starts the app- change it's name to INIT_yourapp
 export default function INIT_WEATHER(top,left){
     ///add html items - navbar icon + window div inside body + window content
-    var navIcon = document.createElement("div");
+var navIcon = document.createElement("div");
 navIcon.id = handle + "open";
-navIcon.innerHTML = '<i class="fa-solid fa-house"></i>';
+navIcon.innerHTML = '<i class="fa-solid fa-cloud"></i>';
 document.querySelector(".navbar").appendChild(navIcon);    
 var card = document.createElement("div");
 card.id = handle;
@@ -74,4 +74,5 @@ document.body.appendChild(card);
     else
     closeWindow(element);
     });
+    card.style.display = "none";
 }

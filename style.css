@@ -5,7 +5,6 @@ body{
     background-size:100% 100%;
 }
 .navbar{
-    padding:5px;
     background-color:aliceblue;
     display:flex;
     flex-direction: column;
@@ -14,6 +13,7 @@ body{
 }
 .navbar div{
     cursor:grab;
+    margin:5px;
 }
 .card{
     background-color:aliceblue;
