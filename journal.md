@@ -8,3 +8,9 @@ For that I have to implement
 
 --html content: navbar icon and actual window
 --script: turn on event listeners (close/open button + dragging)
+
+Ok that's done :D
+Had to make some compromises, firstly the dragging functions have to be either imported either hardcoded in the actual app script, for now they are hardcoded but I think I'll change that.
+Other than that, everything is great, I even implemented the window closing on mousedown, so it dissapears if the user touches the corner button, like actual windows tabs.
+
+Ok nevermind that coredrag js file took 10 minutes to implement.
