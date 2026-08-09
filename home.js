@@ -1,6 +1,8 @@
-import {dragElement} from "./coredrag.js"
-import {openWindow} from "./coredrag.js"
-import { closeWindow } from "./coredrag.js";
+import {dragElement} from "./coretools.js"
+import {openWindow} from "./coretools.js"
+import { closeWindow } from "./coretools.js"
+//for a custom template:
+//change the handle const, the default function name (INIT_HOME), and put the code inside the content variable
 //actual app content
 let content = `
 <h2>Welcome to my OS!</h2>
@@ -10,8 +12,16 @@ const handle = "title";
 //this function starts the app- change it's name to INIT_yourapp
 export default function INIT_HOME(top,left){
     ///add html items - navbar icon + window div inside body + window content
-    document.querySelector(".navbar").innerHTML+=`<div id="${handle}open"><i class="fa-solid fa-house"></i></div>`;
-    document.querySelector("body").innerHTML+=`<div style="top: ${top}px; left: ${left}px;" class="card" id="${handle}"></div>`;
+    var navIcon = document.createElement("div");
+    navIcon.id = handle + "open";
+    navIcon.innerHTML = '<i class="fa-solid fa-house"></i>';
+    document.querySelector(".navbar").appendChild(navIcon);    
+    var card = document.createElement("div");
+    card.id = handle;
+    card.className = "card";
+    card.style.top = top + "px";
+    card.style.left = left + "px";
+    document.body.appendChild(card);
     document.querySelector(`#${handle}`).innerHTML=`
     <div class="appbar header" id="${handle}header">
             <div id="${handle}close" class="closebutton"><i class="fa-solid fa-circle" style="color: rgb(255, 0, 0);"></i></div>
@@ -35,19 +45,3 @@ export default function INIT_HOME(top,left){
     closeWindow(element);
     });
 }
-
-/*
---inside navbar
-<div id="titleopen"><i class="fa-solid fa-house"></i></div>
-
---inside body after navbar
-00<div style="top: 50px; left: 100px;" class="card" id="title">
-        <div class="appbar header" id="titleheader">
-            <div id="titleclose" class="closebutton"><i class="fa-solid fa-circle" style="color: rgb(255, 0, 0);"></i></div>
-        </div>
-        <div class="appcontent">
-            <h2>Welcome to my OS!</h2>
-            <p>lorem ipsum something</p>
-        </div>
-00</div>
-*/

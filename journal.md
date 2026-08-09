@@ -14,3 +14,5 @@ Had to make some compromises, firstly the dragging functions have to be either i
 Other than that, everything is great, I even implemented the window closing on mousedown, so it dissapears if the user touches the corner button, like actual windows tabs.
 
 Ok nevermind that coredrag js file took 10 minutes to implement.
+
+Making a notes app proves pretty difficult, since the tab should be resizeable, I will make some easier apps for now and probably create that feature in the second part of the project.
