@@ -12,6 +12,9 @@ body{
     border: 3px solid black;
     border-radius:10px;
 }
+.navbar div{
+    cursor:grab;
+}
 .card{
     background-color:aliceblue;
     display:flex;
@@ -41,6 +44,5 @@ body{
     padding:5px;
 }
 .appcontent{
-        padding:5px;
-
+    padding:5px;
 }
