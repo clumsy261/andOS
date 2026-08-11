@@ -1,27 +1,28 @@
-
-let content ="<p>nutting</p>";
+let content ="<p>Code didn't compile D:</p>";
 
 function fetch_weather(){
 fetch("https://ipwho.is/")
   .then(r => r.json())
   .then(ip => {
-content=`<h2>Weather for ${ip.city}</h2>`;
-fetch(`https://api.open-meteo.com/v1/forecast?latitude=${ip.latitude}&longitude=${ip.longitude}&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m`)
-  .then(r => r.json())
-  .then(d => {
-    const c = d.current;  
-     // c.temperature_2m, c.weather_code, c.wind_speed_10m
-    content+=`<p>Temperature:  ${c.temperature_2m}°C</p>`
-    if(c.weather_code===0) content+=`<p>Weather code:  0 - sunny</p>`;
-    else if(c.weather_code < 4) content+=`<p>Weather code:  ${c.weather_code} - cloudy`;
-    else if(c.weather_code > 3) content+=`<p>Weather code:  ${c.weather_code} - big chances of rain`;
-    content+=`<p>Wind speed:  ${c.wind_speed_10m}m/s</p>`
-    writetoapp(content,handle);
-    }).catch(err =>{
-      content=`<p>Sorry, weather services didn't respond</p><p>${err.message}</p>`;
-    writetoapp(content,handle);
-    console.log(Response);  
-    })
+  content=`<h2>Weather for ${ip.city}</h2>`;
+  console.log(`${ip.latitude}, ${ip.longitude}`);
+  fetch(`https://api.open-meteo.com/v1/forecast?latitude=${ip.latitude}&longitude=${ip.longitude}&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m`)
+    .then(r => r.json())
+    .then(d => {
+      const c = d.current;  
+      // c.temperature_2m, c.weather_code, c.wind_speed_10m
+      content+=`<p>Temperature:  ${c.temperature_2m}°C</p>`
+      if(c.weather_code===0) content+=`<p>Weather code:  0 - sunny</p>`;
+      else if(c.weather_code < 4) content+=`<p>Weather code:  ${c.weather_code} - cloudy`;
+      else if(c.weather_code > 3) content+=`<p>Weather code:  ${c.weather_code} - big chances of rain`;
+      content+=`<p>Wind speed:  ${c.wind_speed_10m}m/s</p>`
+      writetoapp(content,handle);
+      })
+      .catch(err =>{
+        content=`<p>Sorry, weather services didn't respond</p><p>${err.message}</p>`;
+        writetoapp(content,handle);
+        console.log(Response);  
+      })
 }).catch(err => {
     content=`<p>Sorry, we couldn't find your location</p><p>${err.message}</p>`;
     writetoapp(content,handle);

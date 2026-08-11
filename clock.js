@@ -1,18 +1,27 @@
 import {dragElement} from "./coretools.js"
 import {openWindow} from "./coretools.js"
-import { closeWindow } from "./coretools.js"
+import {closeWindow} from "./coretools.js"
+import { writetoapp } from "./coretools.js";
 
-//actual app content
-let content = `
-<h2>Welcome to my OS!</h2>
-<p>lorem ipsum something</p>`;
+
+let content = `<div style="display:flex;"><div id="timetext"><p>Time is $</p></div><canvas id="clockface" width="150" height="150"></canvas></div>`;
+
+
 //app title - title
 const handle = "clock";
 //this function starts the app- change it's name to INIT_yourapp
 export default function INIT_CLOCK(top,left){
     ///add html items - navbar icon + window div inside body + window content
-    document.querySelector(".navbar").innerHTML+=`<div id="${handle}open"><i class="fa-solid fa-house"></i></div>`;
-    document.querySelector("body").innerHTML+=`<div style="top: ${top}px; left: ${left}px;" class="card" id="${handle}"></div>`;
+    var navIcon = document.createElement("div");
+    navIcon.id = handle + "open";
+    navIcon.innerHTML = '<i class="fa-solid fa-clock"></i>';
+    document.querySelector(".navbar").appendChild(navIcon);    
+    var card = document.createElement("div");
+    card.id = handle;
+    card.className = "card";
+    card.style.top = top + "px";
+    card.style.left = left + "px";
+    document.body.appendChild(card);
     document.querySelector(`#${handle}`).innerHTML=`
     <div class="appbar header" id="${handle}header">
             <div id="${handle}close" class="closebutton"><i class="fa-solid fa-circle" style="color: rgb(255, 0, 0);"></i></div>
@@ -35,48 +44,103 @@ export default function INIT_CLOCK(top,left){
     else
     closeWindow(element);
     });
+    card.style.display = "none";
+    begin_time();
+    begin_clock();
 }
-`<div style="top: 50px; left: 100px;" class="card" id="clock">
-    <div class="appbar header" id="notesheader">
-            <div id="clockclose" class="closebutton"><svg class="svg-inline--fa fa-circle" style="color: rgb(255, 0, 0);" data-prefix="fas" data-icon="circle" role="img" viewBox="0 0 512 512" aria-hidden="true" data-fa-i2svg=""><path fill="currentColor" d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0z"></path></svg><!-- <i class="fa-solid fa-circle" style="color: rgb(255, 0, 0);"></i> Font Awesome fontawesome.com --></div>
-    </div>
-        <div class="appcontent">  
-            <div style="display:flex">
-            <div>
-                <script src="https://cdn.logwork.com/widget/clock.js"></script>
-                Current time for
-                <select>
-                    <option value="Atlantic/Reykjavík">GMT</option>
-                    <option value="Europe/London">GMT+1</option>
-                    <option value="Europe/Berlin">GMT+2</option>
-                    <option value="Europe/Bucharest">GMT+3</option>
-                    <option value="Asia/Dubai">GMT+4</option>
-                    <option value="Asia/Astana">GMT+5</option>
-                    <option value="Asia/Bangladesh">GMT+6</option>
-                    <option value="Asia/Norilsk">GMT+7</option>
-                    <option value="Asia/Beijing">GMT+8</option>
-                    <option value="Asia/Yakutsk">GMT+9</option>
-                    <option value="Australia/Cairns">GMT+10</option>
-                    <option value="Asia/Magadan">GMT+11</option>
-                    <option value="Asia/Anadyr">GMT+12</option>
-                    <option value="Pacific/Niue">GMT-11</option>
-                    <option value="Pacific/Honolulu">GMT-10</option>
-                    <option value="America/Adak">GMT-9</option>
-                    <option value="America/Anchorage">GMT-8</option>
-                    <option value="America/Whitehorse">GMT-7</option>
-                    <option value="America/Denver">GMT-6</option>
-                    <option value="America/Chicago">GMT-5</option>
-                    <option value="America/Miami">GMT-4</option>
-                    <option value="America/Halifax">GMT-3</option>
-                    <option value="America/Godthab">GMT-2</option>
-                    <option value="America/Godthab">GMT-1</option>
-                </select>
-            </div>
-            <div>            
-            <a href="https://logwork.com/current-time-in-ploiesti-romania-prahova" class="clock-time" data-style="default-numeral" data-size="150" data-timezone="Europe/Bucharest">_</a>
-            <a href="https://logwork.com/current-time-in-ploiesti-romania-prahova" class="clock-time" data-style="default-numeral" data-size="150" data-timezone="America/New_York">_</a>
-            </div>
-            </div>
-            <!--<iframe src="https://free.timeanddate.com/clock/iajf6usg/n5121/szw110/szh110/hoc000/hbw4/cf100/hgr0/fav0/fiv0/mqc000/mqs3/mql25/mqw6/mqd96/mhc000/mhs3/mhl20/mhw6/mhd96/mmc000/mms3/mml10/mmw2/mmd96/hhw16/hmw16/hmr4/hsc000/hss3/hsl90" frameborder="0" width="110" height="110"></iframe>-->
-        </div>
-    </div>`
+function begin_clock()
+{
+const canvas = document.getElementById("clockface");
+const ctx = canvas.getContext("2d");
+let radius = canvas.height / 2;
+ctx.translate(radius, radius);
+radius = radius * 0.90
+function drawFace(ctx, radius) {
+  const grad = ctx.createRadialGradient(0, 0 ,radius * 0.95, 0, 0, radius * 1.05);
+  grad.addColorStop(0, '#333');
+  grad.addColorStop(0.5, 'white');
+  grad.addColorStop(1, '#333');
+
+  ctx.beginPath();
+  ctx.arc(0, 0, radius, 0, 2 * Math.PI);
+  ctx.fillStyle = 'white';
+  ctx.fill();
+
+  ctx.strokeStyle = grad;
+  ctx.lineWidth = radius*0.1;
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.arc(0, 0, radius * 0.1, 0, 2 * Math.PI);
+  ctx.fillStyle = '#333';
+  ctx.fill();
+}
+function drawNumbers(ctx, radius) {
+  ctx.font = radius * 0.15 + "px arial";
+  ctx.textBaseline = "middle";
+  ctx.textAlign = "center";
+  for(let num = 1; num < 13; num++){
+    let ang = num * Math.PI / 6;
+    ctx.rotate(ang);
+    ctx.translate(0, -radius * 0.85);
+    ctx.rotate(-ang);
+    ctx.fillText(num.toString(), 0, 0);
+    ctx.rotate(ang);
+    ctx.translate(0, radius * 0.85);
+    ctx.rotate(-ang);
+  }
+}
+function drawTime(ctx, radius) {
+  const now = new Date();
+  let hour = now.getHours();
+  let minute = now.getMinutes();
+  let second = now.getSeconds();
+  //hour
+  hour = hour%12;
+  hour = (hour*Math.PI/6)+(minute*Math.PI/(6*60))+(second*Math.PI/(360*60));
+  drawHand(ctx, hour, radius*0.5, radius*0.07);
+  //minute
+  minute = (minute*Math.PI/30)+(second*Math.PI/(30*60));
+  drawHand(ctx, minute, radius*0.75, radius*0.07);
+  // second
+  second = (second*Math.PI/30);
+  drawHand(ctx, second, radius*0.9, radius*0.02);
+}
+function drawHand(ctx, pos, length, width) {
+  ctx.beginPath();
+  ctx.lineWidth = width;
+  ctx.lineCap = "round";
+  ctx.moveTo(0,0);
+  ctx.rotate(pos);
+  ctx.lineTo(0, -length);
+  ctx.stroke();
+  ctx.rotate(-pos);
+}
+function drawClock() {
+  drawFace(ctx, radius);
+  drawNumbers(ctx, radius);
+  drawTime(ctx, radius);
+}
+setInterval(drawClock,1000);
+}
+
+function begin_time()
+{
+    let days=["monday","tuesday","wednesday","thursday","friday","saturday","sunday"]
+    function update_time(){
+        const text=document.getElementById("timetext");
+        const now=new Date();
+        text.innerHTML=`<strong>Current time is:</strong>
+        <p>${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}</p>
+        <strong>Current date is:</strong>
+        <p>${now.getDate()}.${now.getMonth()}.${now.getFullYear()} </p>
+        <p>(${days[now.getDay()]})</p>`;
+        const canvas = document.getElementById("clockface");
+        const size = text.offsetHeight;
+        canvas.style.width = size + "px";
+        canvas.style.height = size + "px";
+    }
+    setInterval(update_time,1000);
+}
+
+
