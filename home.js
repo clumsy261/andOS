@@ -3,14 +3,20 @@ import {openWindow} from "./coretools.js"
 import { closeWindow } from "./coretools.js"
 //for a custom template:
 //change the handle const, the default function name (INIT_HOME), and put the code inside the content variable
-//actual app content
+//you can code anywhere outside the main functions, and use the writetoapp(content) for active tabs
+//import {writetoapp} from "./coretools.js"
+
+//have the app be hidden by default or not
+let hidden=0;
+//actual content you set in html
 let content = `
 <h2>Welcome to my OS!</h2>
 <p>lorem ipsum something</p>`;
-//app title - title
-const handle = "title";
-//this function starts the app- change it's name to INIT_yourapp
-export default function INIT_HOME(top,left){
+
+const handle = "title"; ///handle of the app
+
+export default function INIT_HOME(top,left) //this function starts the app- change it's name to INIT_yourapp
+{
     ///add html items - navbar icon + window div inside body + window content
     var navIcon = document.createElement("div");
     navIcon.id = handle + "open";
@@ -44,4 +50,6 @@ export default function INIT_HOME(top,left){
     else
     closeWindow(element);
     });
+    if(hidden)
+        card.style.display="none";
 }
