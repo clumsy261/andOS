@@ -22,9 +22,6 @@ Features include:
 | - weather service | Local weather via IP location |
 | - clock/calendar | Analog clock + live date/time |
 
-- home greeting
-- weather service
-- clock/calendar
 
 ---
 
