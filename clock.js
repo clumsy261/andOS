@@ -3,7 +3,6 @@ import {openWindow} from "./coretools.js"
 import {closeWindow} from "./coretools.js"
 import { writetoapp } from "./coretools.js";
 
-
 let content = `<div style="display:flex;"><div id="timetext"><p>Time is $</p></div><canvas id="clockface" width="150" height="150"></canvas></div>`;
 
 

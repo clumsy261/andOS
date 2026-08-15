@@ -16,3 +16,14 @@ Other than that, everything is great, I even implemented the window closing on m
 Ok nevermind that coredrag js file took 10 minutes to implement.
 
 Making a notes app proves pretty difficult, since the tab should be resizeable, I will make some easier apps for now and probably create that feature in the second part of the project.
+
+
+Welcome back everyone, today we start a new journey. Today I begin making this a competitive project, to be rated by actual people who have already created wonderful projects.
+
+Here is a grocery list for features I want to add:
+-adjustable window size in coretools
+-daily background image with info
+-overlay order
+-notes app
+-custom app making window (for user apps)
+-db for said custom apps

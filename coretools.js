@@ -43,7 +43,47 @@ export function closeWindow(element){
 export function openWindow(element){
   element.style.display = "flex";
 }
+///live updates to the content of your app, avoids resetting window eventlisteners
 export function writetoapp(content,handle)
 {
     document.querySelector(`#${handle} .appcontent`).innerHTML=content;
+}
+export function resizeElement(element) {
+    if (element.style.display === "none") return;
+    if (document.getElementById(element.id + "resize")) return;
+    const minwidth=element.offsetWidth;
+    const minheight=element.offsetHeight;
+
+    var handle = document.createElement("div");
+    handle.id = element.id + "resize";
+    handle.className = "resizehandle";
+    element.appendChild(handle);
+
+    var startX = 0, startY = 0, startW = 0, startH = 0;
+    handle.onmousedown = function(e) {
+        e = e || window.event;
+        e.preventDefault();
+        startX = e.clientX;
+        startY = e.clientY;
+        startW = element.offsetWidth;
+        startH = element.offsetHeight;
+        document.onmouseup = stopResizing;
+        document.onmousemove = elementResize;
+    };
+
+    function elementResize(e) {
+        if (element.style.display === "none") return;
+        e = e || window.event;
+        e.preventDefault();
+        // direct math (start size + total drag) - no cumulative drift
+        var w = startW + (e.clientX - startX);
+        var h = startH + (e.clientY - startY);
+        element.style.width  = Math.max(minwidth, w) + "px";   // min width
+        element.style.height = Math.max(minheight, h) + "px";    // min height
+    }
+
+    function stopResizing() {
+        document.onmouseup = null;
+        document.onmousemove = null;
+    }
 }
