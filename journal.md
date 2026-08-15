@@ -27,3 +27,5 @@ Here is a grocery list for features I want to add:
 -notes app
 -custom app making window (for user apps)
 -db for said custom apps
+
+I've finished the adjustable window image, with a corner slider that moves the bottom right corner with it, and the overlay order, the last interacted with window shows up in front.

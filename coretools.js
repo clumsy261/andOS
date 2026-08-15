@@ -1,5 +1,8 @@
 export function dragElement(element) {
-    if (element.style.display === "none") return;        
+  element.addEventListener("mousedown", function() {
+    if (element.style.display !== "none") bringToFront(element);
+  });  
+  if (element.style.display === "none") return;        
         var initialX = 0;
         var initialY = 0;
         var currentX = 0;
@@ -42,12 +45,14 @@ export function closeWindow(element){
 }
 export function openWindow(element){
   element.style.display = "flex";
+  bringToFront(element);
 }
 ///live updates to the content of your app, avoids resetting window eventlisteners
 export function writetoapp(content,handle)
 {
     document.querySelector(`#${handle} .appcontent`).innerHTML=content;
 }
+///corner handle for window resize
 export function resizeElement(element) {
     if (element.style.display === "none") return;
     if (document.getElementById(element.id + "resize")) return;
@@ -86,4 +91,11 @@ export function resizeElement(element) {
         document.onmouseup = null;
         document.onmousemove = null;
     }
+}
+
+let zTop=1;
+
+export function bringToFront(element)
+{
+  element.style.zIndex = ++zTop;
 }
