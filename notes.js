@@ -17,17 +17,19 @@ const handle = "notes"; ///handle of the app
 
 export default function INIT_NOTES(top,left) //this function starts the app- change it's name to INIT_yourapp
 {
-    ///add html items - navbar icon + window div inside body + window content
+    ///add html items - navbar icon
     var navIcon = document.createElement("div");
     navIcon.id = handle + "open";
     navIcon.innerHTML = '<i class="fa-solid fa-note-sticky"></i>';
-    document.querySelector(".navbar").appendChild(navIcon);    
+    document.querySelector(".navbar").appendChild(navIcon); 
+    //window div inside body   
     var card = document.createElement("div");
     card.id = handle;
     card.className = "card";
     card.style.top = top + "px";
     card.style.left = left + "px";
     document.body.appendChild(card);
+    //window content (handle + actual user content)
     document.querySelector(`#${handle}`).innerHTML=`
     <div class="appbar header" id="${handle}header">
             <div id="${handle}close" class="closebutton"><i class="fa-solid fa-circle" style="color: rgb(255, 0, 0);"></i></div>
@@ -56,4 +58,5 @@ export default function INIT_NOTES(top,left) //this function starts the app- cha
     events.addEventListener("resize",(e) =>{
         render(e.detail.w,e.detail.h);
     });
+    card.style.display="none";
 }

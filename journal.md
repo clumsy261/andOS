@@ -29,3 +29,5 @@ Here is a grocery list for features I want to add:
 -db for said custom apps
 
 I've finished the adjustable window image, with a corner slider that moves the bottom right corner with it, and the overlay order, the last interacted with window shows up in front.
+
+Now, the notes app is done as well. All actual features are done (I think), now I only have to keep on adding some new apps.
