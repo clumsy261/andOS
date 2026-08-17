@@ -53,7 +53,8 @@ export function writetoapp(content,handle)
     document.querySelector(`#${handle} .appcontent`).innerHTML=content;
 }
 ///corner handle for window resize
-export function resizeElement(element) {
+export function resizeElement(element, onResize) {
+    const events = new EventTarget();
     if (element.style.display === "none") return;
     if (document.getElementById(element.id + "resize")) return;
     const minwidth=element.offsetWidth;
@@ -81,20 +82,21 @@ export function resizeElement(element) {
         e = e || window.event;
         e.preventDefault();
         // direct math (start size + total drag) - no cumulative drift
-        var w = startW + (e.clientX - startX);
-        var h = startH + (e.clientY - startY);
-        element.style.width  = Math.max(minwidth, w) + "px";   // min width
-        element.style.height = Math.max(minheight, h) + "px";    // min height
+        var w = Math.max(minwidth, startW + (e.clientX - startX));
+        var h = Math.max(minheight, startH + (e.clientY - startY));
+        element.style.width  = w + "px";
+        element.style.height = h + "px";
+        events.dispatchEvent(new CustomEvent("resize", {detail:{w,h}}));
     }
 
     function stopResizing() {
         document.onmouseup = null;
         document.onmousemove = null;
     }
-}
-
+    return events;
+  }
+///sets zIndex to highest value
 let zTop=1;
-
 export function bringToFront(element)
 {
   element.style.zIndex = ++zTop;

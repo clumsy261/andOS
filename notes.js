@@ -1,26 +1,26 @@
-import {dragElement} from "./coretools.js"
+import {dragElement, writetoapp} from "./coretools.js"
 import {openWindow} from "./coretools.js"
 import { closeWindow } from "./coretools.js"
-//for a custom template:
-//change the handle const, the default function name (INIT_HOME), and put the code inside the content variable
-//you can code anywhere outside the main functions, and use the writetoapp(content) for active tabs
-//import {writetoapp} from "./coretools.js"
-
+import { resizeElement } from "./coretools.js";
 //have the app be hidden by default or not
 let hidden=0;
 //actual content you set in html
-let content = `
-<h2>Welcome to my OS!</h2>
-<p>lorem ipsum something</p>`;
+let content = `<textarea id="notesdata" style="width:200px; height:150px; resize:none;"></textarea>`;
+function render(w,h)
+{
+    const data=document.getElementById("notesdata");
+    data.style.width  = w-10 + "px";
+    data.style.height = h-36 +"px";
+}
 
-const handle = "title"; ///handle of the app
+const handle = "notes"; ///handle of the app
 
-export default function INIT_HOME(top,left) //this function starts the app- change it's name to INIT_yourapp
+export default function INIT_NOTES(top,left) //this function starts the app- change it's name to INIT_yourapp
 {
     ///add html items - navbar icon + window div inside body + window content
     var navIcon = document.createElement("div");
     navIcon.id = handle + "open";
-    navIcon.innerHTML = '<i class="fa-solid fa-house"></i>';
+    navIcon.innerHTML = '<i class="fa-solid fa-note-sticky"></i>';
     document.querySelector(".navbar").appendChild(navIcon);    
     var card = document.createElement("div");
     card.id = handle;
@@ -52,4 +52,8 @@ export default function INIT_HOME(top,left) //this function starts the app- chan
     });
     if(hidden)
         card.style.display="none";
+    const events=resizeElement(card);
+    events.addEventListener("resize",(e) =>{
+        render(e.detail.w,e.detail.h);
+    });
 }
