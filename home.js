@@ -1,7 +1,7 @@
 import {dragElement} from "./coretools.js"
 import {openWindow} from "./coretools.js"
 import { closeWindow } from "./coretools.js"
-import { resizeElement } from "./coretools.js";
+
 //for a custom template:
 //change the handle const, the default function name (INIT_HOME), and put the code inside the content variable
 //you can code anywhere outside the main functions, and use the writetoapp(content) for active tabs

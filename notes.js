@@ -3,7 +3,7 @@ import {openWindow} from "./coretools.js"
 import { closeWindow } from "./coretools.js"
 import { resizeElement } from "./coretools.js";
 //have the app be hidden by default or not
-let hidden=0;
+let hidden=1;
 //actual content you set in html
 let content = `<textarea id="notesdata" style="width:200px; height:150px; resize:none;"></textarea>`;
 function render(w,h)
@@ -52,11 +52,10 @@ export default function INIT_NOTES(top,left) //this function starts the app- cha
     else
     closeWindow(element);
     });
-    if(hidden)
-        card.style.display="none";
     const events=resizeElement(card);
     events.addEventListener("resize",(e) =>{
         render(e.detail.w,e.detail.h);
     });
-    card.style.display="none";
+    if(hidden)
+        card.style.display="none";
 }
