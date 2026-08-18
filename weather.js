@@ -5,7 +5,7 @@ fetch("https://ipwho.is/")
   .then(r => r.json())
   .then(ip => {
   content=`<h2>Weather for ${ip.city}</h2>`;
-  console.log(`${ip.latitude}, ${ip.longitude}`);
+  console.log(`Aproximate coords for user:${ip.latitude}, ${ip.longitude}`);
   fetch(`https://api.open-meteo.com/v1/forecast?latitude=${ip.latitude}&longitude=${ip.longitude}&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m`)
     .then(r => r.json())
     .then(d => {
