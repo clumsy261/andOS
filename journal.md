@@ -31,3 +31,9 @@ Here is a grocery list for features I want to add:
 I've finished the adjustable window image, with a corner slider that moves the bottom right corner with it, and the overlay order, the last interacted with window shows up in front.
 
 Now, the notes app is done as well. All actual features are done (I think), now I only have to keep on adding some new apps.
+
+Now I'm going to try implementing the apod feature from the website challenge. The only problem is that with no build manager, like vite, I can't use private keys and keep them secret. I'll just leave it out there and hope nobody takes advantage of it (it's not that important anyways).
+
+Yayyy the background thingie is done as well, had to use await and async functions but it works well for now.
+
+The only thing I want to implement from now on is a default script for custom apps and a database for storing them, so users could maybe have an appstore inside the browser.
