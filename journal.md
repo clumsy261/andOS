@@ -37,3 +37,7 @@ Now I'm going to try implementing the apod feature from the website challenge. T
 Yayyy the background thingie is done as well, had to use await and async functions but it works well for now.
 
 The only thing I want to implement from now on is a default script for custom apps and a database for storing them, so users could maybe have an appstore inside the browser.
+
+This one does proves pretty difficult. I will probably use a public free db, and have the user send the custom code via a form, directly as a push query to said db. It would also have an encoded version of the user's location/ip to monitor the amount of content coming and to prevent upload abuse.
+
+Thesde are actually two features, so I'll apply them one by one. The first is turning code into an app, and the second is actually publishing said code to a public db.
