@@ -7,7 +7,7 @@ let hidden=1;
 
 //actual content you set in html
 let mediatitle = `<strong>High Cliffs Surrounding Echus Chasma on Mars</strong>`;
-const KEY="KSFtXMP6HhAYCTz29Nm4giBBdrCwf59EbbN5PG94";
+const KEY="KSFtXMP6HhAYCTz29Nm4giBBdrCwf59EbbN5PG94ff";///last two ff for general testing (api is limited)
 
 const handle = "background"; ///handle of the app
 

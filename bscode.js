@@ -4,14 +4,18 @@ import { closeWindow } from "./coretools.js"
 import INIT from "./custom.js";
 import { resizeElement, writetoapp } from "./coretools.js";
 
+const URL="https://eomzkoohlqupoenlufwl.supabase.co";
+const KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVvbXprb29obHF1cG9lbmx1ZndsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc0OTk0NzAsImV4cCI6MjEwMzA3NTQ3MH0.EZz3Sbb7QqS68FlrKboxVZlH3-sLwqOddlR_c99EsZI";
+
 let content = `<div style="display:flex; justify-content:center;">
-<div>Title:<textarea id="titledetail" style="height:1.3rem; resize:none;"></textarea></div>
-<div>Emoji:<textarea id="emojidetail" style="height:1.3rem; resize:none;"></textarea></div>
+<div>Title:<textarea placeholder="app title(unique)" id="titledetail" style="height:1.3rem; resize:none;"></textarea></div>
+<div>Author:<textarea placeholder="your cool username" id="authordetail" style="height:1.3rem; resize:none;"></textarea></div>
+<div>Emoji:<textarea placeholder="font-awesome icon" id="emojidetail" style="height:1.3rem; resize:none;"></textarea></div>
 <button id="submitnewapp">Submit</button>
 <button id="submitshop">Publish</button></div>
 <div style="display:flex;">
-Content:<textarea style="height:1.3rem; resize:none;" id="contentdetail"></textarea>
-Code:<textarea style="height:1.3rem; resize:none;" id="codedetail"></textarea></div>`;
+Content:<textarea style="height:1.3rem; width:300px; resize:none;" id="contentdetail" placeholder="html code"></textarea>
+Code:<textarea style="height:1.3rem; width:300px; resize:none;" id="codedetail" placeholder="javascript code"></textarea></div>`;
 
 const handle = "bscode"; ///handle of the app
 
@@ -44,6 +48,7 @@ export default function INIT_BSCODE(top,left) //this function starts the app- ch
     ScreenClose.addEventListener("mousedown", function(e) {
     closeWindow(element);
     });
+    
     ScreenOpen.addEventListener("click", function(){
     if(element.style.display==="none")
     openWindow(element);
@@ -63,20 +68,64 @@ export default function INIT_BSCODE(top,left) //this function starts the app- ch
         events.addEventListener("resize", (e)=>{
             render(e.detail.w,e.detail.h);
         })
+        const publishnewapp =document.getElementById("submitshop");
         const submitnewapp = document.getElementById("submitnewapp");
         submitnewapp.addEventListener("click", (e)=>{
-            var details = {
+            const details = {
                 handle:"",
                 content:"",
                 emoji:"",
                 code:"",
+                author:"",
             };
             details.handle = document.getElementById("titledetail").value;
             details.content = document.getElementById("contentdetail").value;            details.content = document.getElementById("contentdetail").value;
             details.emoji = document.getElementById("emojidetail").value;
             details.code = document.getElementById("codedetail").value;
+            details.author = document.getElementById("authordetail").value;
+            if(details.author === "");
+            details.author = "anonymous";
             INIT(top,left,details);
-        })
+        });
+        
+        publishnewapp.addEventListener("click", async (e)=>{
+            const details = {
+                handle:"",
+                content:"",
+                emoji:"",
+                code:"",
+                author:"",
+            };
+            details.handle = document.getElementById("titledetail").value;
+            details.content = document.getElementById("contentdetail").value;            details.content = document.getElementById("contentdetail").value;
+            details.emoji = document.getElementById("emojidetail").value;
+            details.code = document.getElementById("codedetail").value;
+            details.author = document.getElementById("authordetail").value;
+            if(details.author === "");
+            details.author = "anonymous";
+            const res = await fetch(`${URL}/rest/v1/apps`,{
+                method: "POST",
+                headers:{
+                    "apikey":KEY,
+                    "Authorization": `Bearer ${KEY}`,
+                    "Content-Type": "application/json",
+                    "Prefer": "return=minimal"
+                },
+                body: JSON.stringify({
+                emoji: details.emoji,
+                content: details.content,
+                title: details.handle,
+                code: details.code,
+                author: details.author
+                })
+            });
+            if(!res.ok)
+            {
+                const error = await res.json();
+                console.log(error);
+                alert(res.message);
+            }
+        });
     }
     card.style.display="none";
 }
