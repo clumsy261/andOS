@@ -8,7 +8,6 @@ import { closeWindow } from "./coretools.js"
 //import {writetoapp} from "./coretools.js"
 
 //have the app be hidden by default or not
-let hidden=0;
 //actual content you set in html
 let content = `
 <h2>Welcome to my OS!</h2>
@@ -51,6 +50,4 @@ export default function INIT_HOME(top,left) //this function starts the app- chan
     else
     closeWindow(element);
     });
-    if(hidden)
-        card.style.display="none";
 }

@@ -53,6 +53,7 @@ export default function INIT(top,left,details) //this function starts the app- c
     openWindow(element);
     else
     closeWindow(element);
-    });
+    }); 
     eval(details.code);
+    card.style.display = "none";
 }
