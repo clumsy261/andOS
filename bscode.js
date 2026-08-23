@@ -19,6 +19,14 @@ Code:<textarea style="height:1.3rem; width:300px; resize:none;" id="codedetail" 
 
 const handle = "bscode"; ///handle of the app
 
+function getAppId(){
+    return localStorage.getItem("andos_app_id");
+}
+
+function setAppId(id){
+    localStorage.setItem("andos_app_id", id);
+}
+
 export default function INIT_BSCODE(top,left) //this function starts the app- change it's name to INIT_yourapp
 {
     ///add html items - navbar icon + window div inside body + window content
@@ -90,41 +98,55 @@ export default function INIT_BSCODE(top,left) //this function starts the app- ch
         
         publishnewapp.addEventListener("click", async (e)=>{
             const details = {
-                handle:"",
+                title:"",
                 content:"",
                 emoji:"",
                 code:"",
                 author:"",
             };
-            details.handle = document.getElementById("titledetail").value;
+            details.title = document.getElementById("titledetail").value;
             details.content = document.getElementById("contentdetail").value;            details.content = document.getElementById("contentdetail").value;
             details.emoji = document.getElementById("emojidetail").value;
             details.code = document.getElementById("codedetail").value;
             details.author = document.getElementById("authordetail").value;
-            if(details.author === "");
-            details.author = "anonymous";
-            const res = await fetch(`${URL}/rest/v1/apps`,{
-                method: "POST",
-                headers:{
-                    "apikey":KEY,
+            if(details.author === "") details.author = "anonymous";
+            const appId = getAppId();
+            if (appId) 
+        {
+            console.log(appId);
+            // Update existing row
+            const res = await fetch(`${URL}/rest/v1/apps?id=eq.${appId}`, {
+                method: "PATCH",
+                headers: {
+                    "apikey": KEY,
                     "Authorization": `Bearer ${KEY}`,
                     "Content-Type": "application/json",
                     "Prefer": "return=minimal"
                 },
-                body: JSON.stringify({
-                emoji: details.emoji,
-                content: details.content,
-                title: details.handle,
-                code: details.code,
-                author: details.author
-                })
+                body: JSON.stringify(details)
             });
-            if(!res.ok)
-            {
-                const error = await res.json();
-                console.log(error);
-                alert(res.message);
-            }
+            if (!res.ok) {console.error(await res.json()); alert(res.message);}
+        } else 
+        {
+        // Insert new row
+        const res = await fetch(`${URL}/rest/v1/apps`, {
+            method: "POST",
+            headers: {
+                "apikey": KEY,
+                "Authorization": `Bearer ${KEY}`,
+                "Content-Type": "application/json",
+                "Prefer": "return=representation"
+            },
+            body: JSON.stringify(details)
+        });
+        if (res.ok) {
+            const data = await res.json();
+            setAppId(data[0].id);  // store the assigned id
+        } else {
+            console.error(await res.json());
+            alert(res.message);
+        }
+        }
         });
     }
     card.style.display="none";
