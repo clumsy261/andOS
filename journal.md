@@ -41,3 +41,10 @@ The only thing I want to implement from now on is a default script for custom ap
 This one does proves pretty difficult. I will probably use a public free db, and have the user send the custom code via a form, directly as a push query to said db. It would also have an encoded version of the user's location/ip to monitor the amount of content coming and to prevent upload abuse.
 
 Thesde are actually two features, so I'll apply them one by one. The first is turning code into an app, and the second is actually publishing said code to a public db.
+
+SOOOOOOOOOOO
+THREE HOURS LATER AND TWO PACKS OF OREO DEVOURED BROUGHT ME TO THIS.
+
+The uploading app works... that was surprisingly easy. Anyone can use as many custom apps as they desire on their personal webOS - with preset html content and or variable javascript code. (traffic cone mfs don't patronize me this is a hackclub project)
+
+I also enabled users to upload their apps to a public database, using supabase. I just need to enable them to also browse, and download said apps and I'm DONE. AGAIN. jk I will probably make a couple of adds for fun afterwards.
