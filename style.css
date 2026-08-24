@@ -34,6 +34,24 @@ body{
     cursor:grab;
     margin:5px;
 }
+#storewindow{
+    overflow-y: auto;
+    max-height: 200px;
+    display:flex; 
+    flex-wrap: wrap;
+}
+.shopcard{
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    margin:10px;
+}
+.shopcard strong{
+    margin:4px;
+}
+.shopcard svg{
+    font-size:3rem;
+}
 .card{
     background-color:aliceblue;
     display:flex;
