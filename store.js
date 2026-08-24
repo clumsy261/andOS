@@ -73,6 +73,9 @@ export default async function INIT_STORE(top,left) //this function starts the ap
                             document.getElementById("storewindow").appendChild(appcard);
                             console.log(app.title, app.author);
                             appcard.addEventListener("click",(e)=>{
+                                if(document.getElementById(app.title))
+                                    alert("this app is already installed in your browser")
+                                else
                                 if(confirm(`Are you sure you want to add this app? Info:${app.info}`))
                                 {
                                     const newdetails ={
