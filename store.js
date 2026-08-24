@@ -114,6 +114,20 @@ export default async function INIT_STORE(top,left) //this function starts the ap
                             appcard.classList="shopcard";
                             document.getElementById("storewindow").appendChild(appcard);
                             console.log(app.title, app.author);
+                            appcard.addEventListener("click",(e)=>{
+                                if(document.getElementById(app.title))
+                                    alert("this app is already installed in your browser")
+                                else
+                                if(confirm(`Are you sure you want to add this app? Info:${app.info}`))
+                                {
+                                    const newdetails ={
+                                        handle:app.title,
+                                        emoji:app.emoji,
+                                        content:app.content,
+                                        code:app.code
+                                    }; INIT(top,left,newdetails);
+                                }
+                            });
                         });
                     }
                     else
