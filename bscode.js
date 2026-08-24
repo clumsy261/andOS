@@ -103,7 +103,9 @@ export default function INIT_BSCODE(top,left) //this function starts the app- ch
                 emoji:"",
                 code:"",
                 author:"",
+                info:""
             };
+            details.info = details.info = prompt("Do you want to add a description for your app?") || "";
             details.title = document.getElementById("titledetail").value;
             details.content = document.getElementById("contentdetail").value;            details.content = document.getElementById("contentdetail").value;
             details.emoji = document.getElementById("emojidetail").value;
