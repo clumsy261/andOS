@@ -34,11 +34,17 @@ body{
     cursor:grab;
     margin:5px;
 }
+
+#bscode div div textarea{
+    border-radius: 5px;
+}
+
 #storewindow{
     overflow-y: auto;
-    max-height: 550px;
+    max-height: 300px;
     display:flex; 
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 .shopcard{
     display:flex;

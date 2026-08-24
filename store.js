@@ -9,7 +9,7 @@ const KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6
 
 
 let content = `
-<input id="storesearch" type="text"></input>
+<input placeholder="search apps here" id="storesearch" type="text" style="border-radius:5px;"></input>
 <div id="storewindow"></div>`;
 
 const handle = "store"; ///handle of the app
@@ -31,7 +31,7 @@ export default async function INIT_STORE(top,left) //this function starts the ap
     <div class="appbar header" id="${handle}header">
             <div id="${handle}close" class="closebutton"><i class="fa-solid fa-circle" style="color: rgb(255, 0, 0);"></i></div>
     </div>
-    <div class="appcontent" style="max-width:240px; text-align:center;">
+    <div class="appcontent" style="max-width:300px; text-align:center;">
         ${content}
     </div>`;
 
@@ -76,7 +76,7 @@ export default async function INIT_STORE(top,left) //this function starts the ap
                                 if(document.getElementById(app.title))
                                     alert("this app is already installed in your browser")
                                 else
-                                if(confirm(`Are you sure you want to add this app? Info:${app.info}`))
+                                if(confirm(`Are you sure you want to add this app?\nInfo:${app.info}`))
                                 {
                                     const newdetails ={
                                         handle:app.title,
@@ -131,7 +131,8 @@ export default async function INIT_STORE(top,left) //this function starts the ap
                         });
                     }
                     else
-                    console.log("no apps found");                        
+                    {console.log("no apps found"); 
+                    alert("no apps found");}                     
                 }
             }
         });

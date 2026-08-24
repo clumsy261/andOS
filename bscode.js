@@ -8,14 +8,14 @@ const URL="https://eomzkoohlqupoenlufwl.supabase.co";
 const KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVvbXprb29obHF1cG9lbmx1ZndsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc0OTk0NzAsImV4cCI6MjEwMzA3NTQ3MH0.EZz3Sbb7QqS68FlrKboxVZlH3-sLwqOddlR_c99EsZI";
 
 let content = `<div style="display:flex; justify-content:center;">
-<div>Title:<textarea placeholder="app title(unique)" id="titledetail" style="height:1.3rem; resize:none;"></textarea></div>
-<div>Author:<textarea placeholder="your cool username" id="authordetail" style="height:1.3rem; resize:none;"></textarea></div>
-<div>Emoji:<textarea placeholder="font-awesome icon" id="emojidetail" style="height:1.3rem; resize:none;"></textarea></div>
-<button id="submitnewapp">Submit</button>
-<button id="submitshop">Publish</button></div>
-<div style="display:flex;">
-Content:<textarea style="height:1.3rem; width:300px; resize:none;" id="contentdetail" placeholder="html code"></textarea>
-Code:<textarea style="height:1.3rem; width:300px; resize:none;" id="codedetail" placeholder="javascript code"></textarea></div>`;
+<div><strong style="vertical-align:top;">Title:</strong><textarea placeholder="app title(unique)" id="titledetail" style="height:1.3rem; resize:none;"></textarea></div>
+<div><strong style="vertical-align:top;">Author:</strong><textarea placeholder="your cool username" id="authordetail" style="height:1.3rem; resize:none;"></textarea></div>
+<div><strong style="vertical-align:top;">Emoji:</strong><textarea placeholder="font-awesome icon" id="emojidetail" style="height:1.3rem; resize:none;"></textarea></div>
+<button style="border-top-left-radius: 5px; border-end-start-radius: 5px;" id="submitnewapp">Submit</button>
+<button style="border-top-right-radius: 5px; border-end-end-radius: 5px;" id="submitshop">Publish</button></div>
+<div style="display:flex; align-items:center; gap:5px;">
+<strong>Content:</strong><textarea style="height:1.3rem; width:320px; resize:none;" id="contentdetail" placeholder="html code"></textarea>
+<strong>Code:</strong><textarea style="height:1.3rem; width:320px; resize:none;" id="codedetail" placeholder="javascript code"></textarea></div>`;
 
 const handle = "bscode"; ///handle of the app
 
