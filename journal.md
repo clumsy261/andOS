@@ -47,4 +47,14 @@ THREE HOURS LATER AND TWO PACKS OF OREO DEVOURED BROUGHT ME TO THIS.
 
 The uploading app works... that was surprisingly easy. Anyone can use as many custom apps as they desire on their personal webOS - with preset html content and or variable javascript code. (traffic cone mfs don't patronize me this is a hackclub project)
 
-I also enabled users to upload their apps to a public database, using supabase. I just need to enable them to also browse, and download said apps and I'm DONE. AGAIN. jk I will probably make a couple of adds for fun afterwards.
+I also enabled users to upload their apps to a public database, using supabase. I just need to enable them to also browse, and download said apps and I'm DONE. AGAIN. jk I will probably make a couple of apps for fun afterwards.
+
+Since the initial design is done, here are some apps I'd like to build:
+-ping pong game
+-blackjack(maybe)
+-news (would need some api)
+-paint
+
+Also, there is one performance issue I need to adress- when the user loads apps in the app store, all their information is fetched, including the actual html content and code, and that might get too resource intensive after adding some more apps, I need to make the shop load only titles and icons, and then fetch the rest if the app is requested by the user.
+
+It took me one hour of async confusion but it is finished now, the store only requests important details (title-icon and info) until a user actually requests to install it.
