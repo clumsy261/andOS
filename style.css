@@ -29,6 +29,8 @@ body{
 }
 #timetext p{
     margin:1px;
+    justify-content: space;
+    
 }
 .navbar div{
     cursor:grab;

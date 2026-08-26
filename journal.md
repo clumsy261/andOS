@@ -58,3 +58,13 @@ Since the initial design is done, here are some apps I'd like to build:
 Also, there is one performance issue I need to adress- when the user loads apps in the app store, all their information is fetched, including the actual html content and code, and that might get too resource intensive after adding some more apps, I need to make the shop load only titles and icons, and then fetch the rest if the app is requested by the user.
 
 It took me one hour of async confusion but it is finished now, the store only requests important details (title-icon and info) until a user actually requests to install it.
+
+I just finished another bug fix, now the user can efficiently use the bscode app to alter their code while using the browser - before that the user had to reload whenever recompiling the application because of duplicate conflicts.
+
+NOOOOOOOOO D: 
+I just deleted the pong game. (i think)
+I finished another app i worked on right now, and just as I published it I forgot the one app per user rule, and I literally have that game saved NOWHERE.
+
+Ok nevermind I think I found a good version of it still cached in my notes, let me check
+
+I will save a backup md folder to github for the important apps after this scare... never again.

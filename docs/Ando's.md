@@ -15,7 +15,7 @@
 </div>
 <strong>THE NAME FOR THE PROJECT ITSELF WAS INSPIRED BY A ROMANIAN FASTFOOD</strong>
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm0zpfjy8Habt4NNYf2feU4XnrqOauvJa2h6nxxMh11Q&s=10">
-<text>Genuinely ther're a great restaurant, I highly commend them and you should try them as well.</text>
+<text>Genuinely they're a great restaurant, I highly commend them and you should try them as well.</text>
 <a href="https://andos.ro">Ando's homepage</a>
 <div>
 ----
@@ -29,8 +29,9 @@ if (music.paused) {
       music.pause();
     }
 });
-document.getElementById("Andoopen").addEventListener("click", (e) =>{
+document.getElementById("Andosopen").addEventListener("click", (e) =>{
 if(card.style.display === "flex")
 music.play();
+else music.pause();
 });
 ----
