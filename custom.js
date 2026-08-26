@@ -6,7 +6,9 @@ import { writetoapp } from "./coretools.js";
 
 
 export default function INIT(top,left,details) //this function starts the app- change it's name to INIT_yourapp
-{ 
+{
+    if(document.getElementById(details.handle))
+        {document.getElementById(details.handle).remove();document.getElementById(`${details.handle}open`).remove();}
     let handle, content,emoji;
     if (details.handle === undefined || details.handle === "")
         handle = "app"+Date.now();
@@ -33,7 +35,7 @@ export default function INIT(top,left,details) //this function starts the app- c
     card.style.left = left + "px";
     document.body.appendChild(card);
     document.querySelector(`#${handle}`).innerHTML=`
-    <div class="appbar header" id="${handle}header">
+    <div style="display:flex;" class="appbar header" id="${handle}header">
             <div id="${handle}close" class="closebutton"><i class="fa-solid fa-circle" style="color: rgb(255, 0, 0);"></i></div>
     </div>
     <div class="appcontent">

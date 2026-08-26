@@ -87,11 +87,11 @@ export default function INIT_BSCODE(top,left) //this function starts the app- ch
                 author:"",
             };
             details.handle = document.getElementById("titledetail").value;
-            details.content = document.getElementById("contentdetail").value;            details.content = document.getElementById("contentdetail").value;
+            details.content = document.getElementById("contentdetail").value;
             details.emoji = document.getElementById("emojidetail").value;
             details.code = document.getElementById("codedetail").value;
             details.author = document.getElementById("authordetail").value;
-            if(details.author === "");
+            if(details.author === "")
             details.author = "anonymous";
             INIT(top,left,details);
         });
@@ -107,8 +107,8 @@ export default function INIT_BSCODE(top,left) //this function starts the app- ch
             };
             details.info = details.info = prompt("Do you want to add a description for your app?") || "";
             details.title = document.getElementById("titledetail").value;
-            details.content = document.getElementById("contentdetail").value;            details.content = document.getElementById("contentdetail").value;
             details.emoji = document.getElementById("emojidetail").value;
+            details.content = document.getElementById("contentdetail").value;            
             details.code = document.getElementById("codedetail").value;
             details.author = document.getElementById("authordetail").value;
             if(details.author === "") details.author = "anonymous";

@@ -5,7 +5,7 @@ import INIT_NOTES from "./notes.js";
 import INIT_BACKGROUND from "./background.js";
 import INIT_BSCODE from "./bscode.js";
 import INIT_STORE from "./store.js";
-
+import INIT from "./custom.js";
 
 var top=50;
 var left=100;

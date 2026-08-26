@@ -55,7 +55,7 @@ export default async function INIT_STORE(top,left) //this function starts the ap
             if(search != "")
             search = "title=ilike.*"+search+"*&";
             if(select != "*")
-                select="title,emoji,info";
+                select="title,emoji,info,author";
             const res = await fetch(
             `${URL}/rest/v1/apps?${search}select=${select}`,
             {
@@ -85,7 +85,7 @@ export default async function INIT_STORE(top,left) //this function starts the ap
             if(document.getElementById(app.title))
                 alert("this app is already installed in your browser")
             else
-            if(confirm(`Are you sure you want to add this app?\nInfo:${app.info}`))
+            if(confirm(`Are you sure you want to add this app?\nInfo: ${app.info}\nAuthor: ${app.author}`))
             {
                 const install = await fetch_supa(app.title, "*");
                 console.log(install);
@@ -121,7 +121,7 @@ export default async function INIT_STORE(top,left) //this function starts the ap
                             if(document.getElementById(app.title))
                                 alert("this app is already installed in your browser")
                             else
-                            if(confirm(`Are you sure you want to add this app? Info:${app.info}`))
+                            if(confirm(`Are you sure you want to add this app?\nInfo: ${app.info}\nAuthor: ${app.author}`))
                             {
                                 const install = await fetch_supa(app.title, "*");
                                     console.log(install);
