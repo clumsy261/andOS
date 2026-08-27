@@ -56,3 +56,7 @@ Also, here are some useful predefined concepts:
 | resizeElement(card) |  function applies small resize nudge on the corner of the window |
 
 Any other functions can be implemented from scratch.
+
+!! Disclaimer, the ping pong app was made with ai (mostly), but was thoroughly checked by me :) and has no bugs/ logic errors.
+
+!! Disclaimer II, most of this project has been made much easier by ai. Personally I used an opencode cli on plan mode, just to understand what an eventlistener is and so further. The code is still handwritten by me, but most of the research was made with ai because stack overflow feels ancient.
