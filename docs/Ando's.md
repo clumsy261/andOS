@@ -34,4 +34,7 @@ if(card.style.display === "flex")
 music.play();
 else music.pause();
 });
+document.getElementById("Andosclose").addEventListener("mousedown", (e) =>{
+music.pause();
+});
 ----
