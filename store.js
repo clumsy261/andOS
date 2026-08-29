@@ -74,6 +74,8 @@ export default async function INIT_STORE(top,left) //this function starts the ap
     document.getElementById("storewindow").innerHTML="";
     data.forEach(app => 
     {
+        if(app.title != "" && app.title)
+        {
         const appcard = document.createElement("div");
         appcard.id = app.title+"storecard";
         appcard.innerHTML=`<i class="fa-solid fa-${app.emoji}"></i><strong>${app.title}</strong>`
@@ -97,6 +99,7 @@ export default async function INIT_STORE(top,left) //this function starts the ap
                 }; INIT(top,left,newdetails);
             }
         });
+        }
     });
     ///title-search based of event listener
     document.getElementById("storesearch").addEventListener("keydown", async (e) =>
@@ -110,6 +113,8 @@ export default async function INIT_STORE(top,left) //this function starts the ap
                 document.getElementById("storewindow").innerHTML="";
                 data.forEach(app => 
                     {
+                        if(app.title!= "" && app.title)
+                        {
                         const appcard = document.createElement("div");
                         appcard.id = app.title+"storecard";
                         appcard.innerHTML=`<i class="fa-solid fa-${app.emoji}"></i><strong>${app.title}</strong>`
@@ -133,6 +138,7 @@ export default async function INIT_STORE(top,left) //this function starts the ap
                                     }; INIT(top,left,newdetails);
                             }
                         });
+                        }
                     });
             }
             else

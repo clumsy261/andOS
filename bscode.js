@@ -105,14 +105,31 @@ export default function INIT_BSCODE(top,left) //this function starts the app- ch
                 author:"",
                 info:""
             };
+            async function isValidIcon(name) 
+            {
+            if (typeof window.FontAwesome === "undefined") return true;
+            const probe = document.createElement("i");
+            probe.className = `fa-solid fa-${name}`;
+            probe.style.display = "none";
+            document.body.appendChild(probe);
+            await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+            const ok = !!probe.querySelector("svg");
+            probe.remove();
+            return ok;
+            }
             details.info = details.info = prompt("Do you want to add a description for your app?") || "";
             details.title = document.getElementById("titledetail").value;
             details.emoji = document.getElementById("emojidetail").value;
             details.content = document.getElementById("contentdetail").value;            
             details.code = document.getElementById("codedetail").value;
             details.author = document.getElementById("authordetail").value;
+            if(details.title === "") details.title=prompt("The app has no name - please add one:");
+            if(details.content === "" && details.code === "")
+                details.content ="<p>Seems like the user forgot to add any content :/ oops</p>";
             if(details.author === "") details.author = "anonymous";
-            const appId = getAppId();
+            if (!(await isValidIcon(details.emoji))) details.emoji = "gears";
+            const appId = 15;//getAppId();
+            if(details.title === "") details.title = "App"+appId;
             if (appId) 
         {
             console.log(appId);
