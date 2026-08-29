@@ -128,7 +128,7 @@ export default function INIT_BSCODE(top,left) //this function starts the app- ch
                 details.content ="<p>Seems like the user forgot to add any content :/ oops</p>";
             if(details.author === "") details.author = "anonymous";
             if (!(await isValidIcon(details.emoji))) details.emoji = "gears";
-            const appId = 15;//getAppId();
+            const appId = getAppId();
             if(details.title === "") details.title = "App"+appId;
             if (appId) 
         {
