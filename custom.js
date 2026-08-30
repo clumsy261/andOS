@@ -3,17 +3,18 @@ import {openWindow} from "./coretools.js"
 import { closeWindow } from "./coretools.js"
 import { resizeElement } from "./coretools.js";
 import { writetoapp } from "./coretools.js";
-
+import { sanitize } from "./coretools.js";
 
 export default function INIT(top,left,details) //this function starts the app- change it's name to INIT_yourapp
 {
+    let handle= sanitize(details.handle);
+    if(handle === "") handle= "app" + Date.now();
     if(document.getElementById(details.handle))
         {document.getElementById(details.handle).remove();document.getElementById(`${details.handle}open`).remove();}
-    let handle, content,emoji;
+    let content,emoji;
     if (details.handle === undefined || details.handle === "")
         handle = "app"+Date.now();
     else
-    handle = details.handle;
     if (details.content === undefined)
         content = "";
     else
@@ -22,7 +23,7 @@ export default function INIT(top,left,details) //this function starts the app- c
         emoji = "gears";
     else
         emoji=details.emoji;
-
+    
     ///add html items - navbar icon + window div inside body + window content
     var navIcon = document.createElement("div");
     navIcon.id = handle + "open";

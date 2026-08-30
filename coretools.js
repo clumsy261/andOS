@@ -101,3 +101,10 @@ export function bringToFront(element)
 {
   element.style.zIndex = ++zTop;
 }
+///cleans a string of invalid characters for queryselector
+export function sanitize(name){
+  if(!name) return "";
+  let h = String(name).replace(/[^a-zA-Z0-9 -]/g, "_");
+  if(!/^[a-zA-Z ]/.test(h)) h = "_" + h;
+  return h;
+}

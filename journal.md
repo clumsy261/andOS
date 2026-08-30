@@ -68,3 +68,15 @@ I finished another app i worked on right now, and just as I published it I forgo
 Ok nevermind I think I found a good version of it still cached in my notes, let me check
 
 I will save a backup md folder to github for the important apps after this scare... never again.
+
+Okkk looking through the reviews I've noticed some popular requests (in order):
+-better readme/documentation for the shop and custom scripts
+-window resize not working? (need to clarify use cases further)
+-share apps via link (maybe with a get parameter to preload the app with a custom link)
+-have the cursor explicitly show when hovering specific items
+-overlapping text? - I have no idea what that guy meant but I'll check it out 
+
+So far I've updated the readme, but I feel like some more support is needed for regular users. I think I'll add an actual app for documenting purposes
+
+Ok I just found another bug - the apps can't take titles with spaces- wich makes sense since they are later used as variables. I think I'll fix this by replacing any spaces with underscores.
+Ok fixed that, but I might need to come back to that because I don't know what other characters aren't allowed
