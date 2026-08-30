@@ -8,13 +8,10 @@ import { sanitize } from "./coretools.js";
 export default function INIT(top,left,details) //this function starts the app- change it's name to INIT_yourapp
 {
     let handle= sanitize(details.handle);
-    if(handle === "") handle= "app" + Date.now();
+    if(handle === "" || details.handle === undefined) handle= "app" + Date.now();
     if(document.getElementById(details.handle))
         {document.getElementById(details.handle).remove();document.getElementById(`${details.handle}open`).remove();}
     let content,emoji;
-    if (details.handle === undefined || details.handle === "")
-        handle = "app"+Date.now();
-    else
     if (details.content === undefined)
         content = "";
     else
