@@ -5,6 +5,12 @@ import { resizeElement } from "./coretools.js";
 import { writetoapp } from "./coretools.js";
 import { sanitize } from "./coretools.js";
 
+//This script is the main integration for user-made apps on my webOS
+//It has almost the same template as the other apps I've previously made, but there is a catch
+//When declared, it also need a details parameter - an object obtaining the title(handle),content,code,emoji(icon),author and optional info
+//In some places only the handle,content and code is required, but the other parameters make everything easier to manage for databases
+
+
 export default function INIT(top,left,details) //this function starts the app- change it's name to INIT_yourapp
 {
     let handle= sanitize(details.handle);

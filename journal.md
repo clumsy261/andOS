@@ -80,3 +80,5 @@ So far I've updated the readme, but I feel like some more support is needed for 
 
 Ok I just found another bug - the apps can't take titles with spaces- wich makes sense since they are later used as variables. I think I'll fix this by replacing any spaces with underscores.
 Ok fixed that, but I might need to come back to that because I don't know what other characters aren't allowed
+
+I believe the person who complained about overlapping text was referring to the actual z-index of the windows. That is the entire webOS idea, so I won't adress that. If there is an actual bug with overlapping code, I will get on to fixing that.
